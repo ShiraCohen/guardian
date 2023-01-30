@@ -1,4 +1,5 @@
 defmodule Guardian.Permissions do
+  require Logger
   @moduledoc """
   An optional plugin to Guardian to provide permissions for your tokens.
 
@@ -318,6 +319,8 @@ defmodule Guardian.Permissions do
       end
 
       defp do_validate_permissions!({type, list}) when is_list(list) do
+        Logger.info("typeeee #{type}")
+        Logger.info("@normalized_perms #{inspect @normalized_perms}")
         perm_set = Map.get(@normalized_perms, type)
 
         if perm_set do
